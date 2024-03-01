@@ -6,7 +6,8 @@ import { mdiPlusCircleOutline, mdiMinusCircleOutline } from '@mdi/js'
 export default function Cart( { cart, showCart, items, updateCart } ) {
     const cartArray = JSON.parse(cart);
     const itemsArray = JSON.parse(items);
-
+    console.log(cartArray)
+    console.log(itemsArray)
     let totalPrice = 0;
 
     return (
@@ -25,8 +26,8 @@ export default function Cart( { cart, showCart, items, updateCart } ) {
                     )
                 }
 
-            })};
-            <p>Total: ${totalPrice}</p>
+            })}
+            <p>Total: ${totalPrice.toFixed(2)}</p>
         </div>
     )
 }
@@ -47,7 +48,7 @@ function CartItem( { id, title, img, quantity, price, updateCart}) {
     return (
         <div className="cart-item">
             <img src={img} alt={title} />
-            <p>{title} {quantity}</p>
+            <p>{title}</p>
             <form className='counter' action="" onSubmit={(e) => {e.preventDefault(); updateCart(id, input, true)}}>
                 <Icon path={mdiMinusCircleOutline} size={1} onClick={handleDecrease} />
                 <input className='item-counter' type="text" inputMode='numeric' placeholder={input} />
@@ -56,7 +57,6 @@ function CartItem( { id, title, img, quantity, price, updateCart}) {
                 <button>Update Cart</button>
             </form>
             <p>${quantity*price}</p>
-            {() => handlePriceUpdate(quantity*price)}
         </div>
     )
 }

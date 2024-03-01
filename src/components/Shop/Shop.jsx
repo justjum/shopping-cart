@@ -5,15 +5,13 @@ import { useOutletContext } from "react-router-dom";
 import Cart from '../Cart/Cart.jsx'
 
 export default function Shop( ) {
-    const [items, setItems] = useState([]);
-
-    const [cart, setCart] = useState([{item:0, quantity:0}]);
-
     
 
     const { 
         totalItems: [totalItems, setTotalItems],  
         showCart: [showCart, setShowCart],
+        cart: [cart, setCart],
+        items: [items, setItems],
     } = useOutletContext();
 
 
@@ -37,7 +35,7 @@ export default function Shop( ) {
                 } else if (updated) {
                     console.log('updated')
                 } else {
-                    setCart([...cart, {item: item, quantity: quantity} ])
+                    setCart([...cart, {item: item, quantity: quantity, key: crypto.randomUUID()} ])
                 }
         });
         }
@@ -55,21 +53,6 @@ export default function Shop( ) {
 
     }
 
-
-
-    useEffect(() => {
-        fetch("https://fakestoreapi.com/products/",{
-            mode: 'cors'
-            } 
-        )
-        .then(res=>res.json())
-        .then(json=>{
-            console.log(json)
-            setItems(json)
-        })
-    }, [])
-
-
     return (
         <>
             <Cart showCart={showCart} cart={JSON.stringify(cart)} items={JSON.stringify(items)} updateCart={updateCart}/>
@@ -77,7 +60,7 @@ export default function Shop( ) {
                 {items.map((item) => {
                     return (
                         <>
-                            <Item id={item.id} title={item.title} description={item.description} image={item.image} price={item.price} updateCart={updateCart}/>
+                            <Item key={'key'+item.id} id={item.id} title={item.title} description={item.description} image={item.image} price={item.price} updateCart={updateCart}/>
                         </>
                     )
                 })}

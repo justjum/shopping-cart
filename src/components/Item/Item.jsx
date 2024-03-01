@@ -16,7 +16,7 @@ export default function Item( { id, title, description, image, price, updateCart
     }
 
     return ( 
-        <div className='item' key={id}>  
+        <div className='item'>  
             <img src={image} alt={title+'picture'} className='shop-item'/>
             <h3>{title}</h3>
             <p>{description}</p>
