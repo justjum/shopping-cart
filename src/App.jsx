@@ -7,10 +7,7 @@ import Cart from './components/Cart/Cart'
 function App() {
   const [totalItems, setTotalItems] = useState(0);
 
-  const [cart, setCart] = useState([{item:0, quantity:0}]);
-
   const [showCart, setShowCart] = useState(false);
-
 
   function handleShowCart() {
     setShowCart(!showCart)
@@ -23,8 +20,8 @@ function App() {
 
       <Outlet totalItems={totalItems} context={{
                                           totalItems: [totalItems, setTotalItems],
-                                          cart: [cart, setCart]}} />
-      <Cart showCart={showCart} cart={JSON.stringify(cart)} />
+                                          showCart: [showCart, setShowCart],
+                                          }} />
     </>
   )
 }

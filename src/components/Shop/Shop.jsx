@@ -7,15 +7,28 @@ import Cart from '../Cart/Cart.jsx'
 export default function Shop( ) {
     const [items, setItems] = useState([]);
 
+    const [cart, setCart] = useState([{item:0, quantity:0}]);
+
+    
+
     const { 
-        totalItems: [totalItems, setTotalItems], 
-        cart: [cart, setCart], 
+        totalItems: [totalItems, setTotalItems],  
+        showCart: [showCart, setShowCart],
     } = useOutletContext();
 
 
-    function updateCart(item, quantity) {
+    function updateCart(item, quantity, update=false) {
         let updated = false;
-        cart.map((product) => {
+        if (update) {
+            cart.map((product) => {
+                if (product.item == item) {
+                    product.quantity = quantity;
+                    setCart([...cart]);
+                    updated=true;
+                }
+            })
+        } else {
+            cart.map((product) => {
                 if (product.item == item) {
                     console.log(product.item, item)
                     product.quantity = product.quantity+quantity;
@@ -27,6 +40,8 @@ export default function Shop( ) {
                     setCart([...cart, {item: item, quantity: quantity} ])
                 }
         });
+        }
+
     }
 
     useEffect(() => updateTotal())
@@ -37,7 +52,6 @@ export default function Shop( ) {
             total = product.quantity+total;
         })  
         setTotalItems(total);
-        console.log(cart)
 
     }
 
@@ -58,6 +72,7 @@ export default function Shop( ) {
 
     return (
         <>
+            <Cart showCart={showCart} cart={JSON.stringify(cart)} items={JSON.stringify(items)} updateCart={updateCart}/>
             <div className="items">  
                 {items.map((item) => {
                     return (

@@ -44,10 +44,3 @@ button {
   width: fit-content;
 }
 
-.shopping-cart {
-  position: absolute;
-  top: 10%;
-  width: 60%;
-  height: 80%;
-  background-color: aqua;
-}
