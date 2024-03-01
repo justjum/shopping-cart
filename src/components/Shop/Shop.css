@@ -1,0 +1,6 @@
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    gap: 10px;
+}
