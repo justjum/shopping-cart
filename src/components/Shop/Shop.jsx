@@ -42,6 +42,11 @@ export default function Shop( ) {
 
     }
 
+    function deleteItem(id) {
+        let newCart = cart.filter((product) => product.item !== id);
+        setCart(newCart);
+    }
+
     useEffect(() => updateTotal())
 
     function updateTotal() {
@@ -55,12 +60,26 @@ export default function Shop( ) {
 
     return (
         <>
-            <Cart showCart={showCart} cart={JSON.stringify(cart)} items={JSON.stringify(items)} updateCart={updateCart}/>
+            <Cart 
+                showCart={showCart} 
+                cart={JSON.stringify(cart)} 
+                items={JSON.stringify(items)} 
+                updateCart={updateCart} 
+                deleteItem={deleteItem}
+            />
             <div className="items">  
                 {items.map((item) => {
                     return (
                         <>
-                            <Item key={'key'+item.id} id={item.id} title={item.title} description={item.description} image={item.image} price={item.price} updateCart={updateCart}/>
+                            <Item 
+                                key={'key'+item.id} 
+                                id={item.id} 
+                                title={item.title} 
+                                description={item.description} 
+                                image={item.image} 
+                                price={item.price} 
+                                updateCart={updateCart} 
+                                />
                         </>
                     )
                 })}

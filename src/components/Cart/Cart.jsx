@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './Cart.css'
 import Icon from '@mdi/react';
-import { mdiPlusCircleOutline, mdiMinusCircleOutline } from '@mdi/js'
+import { mdiPlusCircleOutline, mdiMinusCircleOutline, mdiDeleteCircleOutline } from '@mdi/js'
 
-export default function Cart( { cart, showCart, items, updateCart } ) {
+export default function Cart( { cart, showCart, items, updateCart, deleteItem } ) {
     const cartArray = JSON.parse(cart);
     const itemsArray = JSON.parse(items);
     console.log(cartArray)
@@ -21,7 +21,7 @@ export default function Cart( { cart, showCart, items, updateCart } ) {
                     totalPrice=totalPrice+(itemInfo[0].price*product.quantity)
                     return (
                         <>                            
-                            <CartItem id={itemInfo[0].id} title={itemInfo[0].title} price={itemInfo[0].price} img={itemInfo[0].image} quantity={product.quantity} updateCart={updateCart} />
+                            <CartItem id={itemInfo[0].id} title={itemInfo[0].title} price={itemInfo[0].price} img={itemInfo[0].image} quantity={product.quantity} updateCart={updateCart} deleteItem={deleteItem} />
                         </>
                     )
                 }
@@ -32,7 +32,7 @@ export default function Cart( { cart, showCart, items, updateCart } ) {
     )
 }
 
-function CartItem( { id, title, img, quantity, price, updateCart}) {
+function CartItem( { id, title, img, quantity, price, updateCart, deleteItem }) {
     const [input, setInput] = useState(quantity)
 
     function handleIncrease() {
@@ -44,17 +44,17 @@ function CartItem( { id, title, img, quantity, price, updateCart}) {
     }
 
 
-
     return (
         <div className="cart-item">
             <img src={img} alt={title} />
             <p>{title}</p>
             <form className='counter' action="" onSubmit={(e) => {e.preventDefault(); updateCart(id, input, true)}}>
-                <Icon path={mdiMinusCircleOutline} size={1} onClick={handleDecrease} />
+                <Icon path={mdiMinusCircleOutline} size={1} onClick={handleDecrease} className='icon' />
                 <input className='item-counter' type="text" inputMode='numeric' placeholder={input} />
                 <input type="hidden" value={id}/>
-                <Icon path={mdiPlusCircleOutline} size={1} onClick={handleIncrease} />
+                <Icon path={mdiPlusCircleOutline} size={1} onClick={handleIncrease} className='icon'/>
                 <button>Update Cart</button>
+                <Icon path={mdiDeleteCircleOutline} size={1.2} className='icon' onClick={() => deleteItem(id)} />
             </form>
             <p>${quantity*price}</p>
         </div>

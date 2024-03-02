@@ -3,7 +3,7 @@
     top: 10%;
     right: 0;
     width: 80%;
-    height: 80%;
+    height: auto;
     display: flex;
     flex-direction: column;
     background-color: lightblue;
@@ -17,6 +17,8 @@
 .cart-item {
     display: grid;
     grid-template-columns: 200px 1fr 150px 150px;
+    justify-items: center;
+    align-items: center;
     background-color: white;
     padding: 10px;
     border-radius: 10px;
@@ -29,6 +31,10 @@ svg {
 .cart-item img {
     width: 150px;
     
+}
+
+.icon:hover {
+    cursor: pointer;
 }
 
 

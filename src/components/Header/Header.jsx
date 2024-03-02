@@ -11,7 +11,7 @@ function Header( { totalItems, handleShowCart } ) {
     <>
       <div className="header">
         <div className='nav-bar'>
-          <Link to="home">Home</Link>
+          <Link to="home">Home</Link><br />
           <Link to="shop">Products</Link>
         </div>
         <p>LOGO</p>
