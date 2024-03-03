@@ -1,4 +1,4 @@
-# Shopping Cart
+# A Shopping Cart
 
 **Status:** In Progress
 
@@ -8,7 +8,7 @@
 
 **Language/Frameworks:** React, Vite, Javascript, CSS
 
-**Learning Focus** React (API calls, React Router, Testing)
+**Learning Focus:** React (API calls, React Router, Testing)
 
 ## Usage
 
