@@ -7,6 +7,7 @@
 
 .shop-item {
     max-width: 200px;
+    max-height: 200px;
 }
 
 .counter {
@@ -18,4 +19,31 @@
 .item-counter {
     width: 20px;
     text-align: center;
+}
+
+.popout {
+    position: absolute;
+    max-width: 800px;
+    background-color: aliceblue;
+    top: 10%;
+    left: 0;
+    z-index: 5;
+    animation: 1s ease-in-out 0s 1 slideInFromLeft;
+    border-radius: none;
+}
+
+
+
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+.popout > .shop-item {
+    max-width: 400px;
+    max-height: 400px;
 }

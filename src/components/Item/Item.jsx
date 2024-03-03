@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiPlusCircleOutline, mdiMinusCircleOutline } from '@mdi/js'
 
 
-export default function Item( { id, title, description, image, price, updateCart }  ) {
+export default function Item( { id, title, description, image, price, updateCart, handleFullItem, popOut=false }  ) {
     const [input, setInput] = useState(0)
 
     function handleIncrease() {
@@ -16,20 +16,27 @@ export default function Item( { id, title, description, image, price, updateCart
     }
 
     return ( 
-        <div className='item'>  
-            <img src={image} alt={title+'picture'} className='shop-item'/>
+        <div className={popOut ? 'item popout' : 'item'}>  
+            <img src={image} alt={title+'picture'} className='shop-item' onClick={() => handleFullItem(id, title, description, image, price)}/>
             <h3>{title}</h3>
-            <p>{description}</p>
-            <form className='counter'action="" onSubmit={(e) => {e.preventDefault(); updateCart(id, input)}}>
+            <h4>${price}</h4>
+            <p style={{display: popOut ? 'inline' : 'none'}}>{description}</p>
+            <form className='counter'action="" onSubmit={(e) => {e.preventDefault(); updateCart(id, input); popOut ? handleFullItem() : ''}}>
                 <Icon path={mdiMinusCircleOutline} size={1} onClick={handleDecrease} />
                 <input className='item-counter' type="text" inputMode='numeric' placeholder={input} />
                 <input type="hidden" value={id}/>
                 <Icon path={mdiPlusCircleOutline} size={1} onClick={handleIncrease} />
                 <button >Add to Cart</button>
+                
             </form>
             
-            <p>${price}</p>
+            <button style={{display: popOut ? 'inline': 'none'}} onClick={() => handleFullItem()}>Close</button>
+            
+            
+            
         </div>
         
     )
 }
+
+// 

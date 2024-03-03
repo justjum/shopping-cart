@@ -5,14 +5,19 @@ import { useOutletContext } from "react-router-dom";
 import Cart from '../Cart/Cart.jsx'
 
 export default function Shop( ) {
+    const [fullItem, setFullItem] = useState(false) 
     
+    const [popOutItem, setPopOutItem] = useState();
 
     const { 
         totalItems: [totalItems, setTotalItems],  
         showCart: [showCart, setShowCart],
         cart: [cart, setCart],
         items: [items, setItems],
+        toggleGray: toggleGray,
+        handleShowCart: handleShowCart,
     } = useOutletContext();
+
 
 
     function updateCart(item, quantity, update=false) {
@@ -58,15 +63,40 @@ export default function Shop( ) {
 
     }
 
+    function handleFullItem(id, title, description, image, price) {
+        toggleGray()
+        setPopOutItem({id: id, title: title, description: description, image: image, price: price})
+        setFullItem(!fullItem);
+        console.log('this')
+    }
+
     return (
         <>
             <Cart 
                 showCart={showCart} 
+                handleShowCart={handleShowCart}
                 cart={JSON.stringify(cart)} 
                 items={JSON.stringify(items)} 
                 updateCart={updateCart} 
                 deleteItem={deleteItem}
             />
+            {fullItem ? 
+                        <Item 
+                            id={popOutItem.id}
+                            title={popOutItem.title}
+                            description={popOutItem.description}
+                            image={popOutItem.image}
+                            price={popOutItem.price}
+                            updateCart={updateCart}
+                            handleFullItem={handleFullItem}
+                            popOut={true}
+            
+                        /> :
+                        ''
+            
+            }
+            
+
             <div className="items">  
                 {items.map((item) => {
                     return (
@@ -79,6 +109,7 @@ export default function Shop( ) {
                                 image={item.image} 
                                 price={item.price} 
                                 updateCart={updateCart} 
+                                handleFullItem={handleFullItem}
                                 />
                         </>
                     )

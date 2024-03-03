@@ -3,7 +3,7 @@ import './Cart.css'
 import Icon from '@mdi/react';
 import { mdiPlusCircleOutline, mdiMinusCircleOutline, mdiDeleteCircleOutline } from '@mdi/js'
 
-export default function Cart( { cart, showCart, items, updateCart, deleteItem } ) {
+export default function Cart( { cart, showCart, items, updateCart, deleteItem, handleShowCart } ) {
     const cartArray = JSON.parse(cart);
     const itemsArray = JSON.parse(items);
     console.log(cartArray)
@@ -21,13 +21,21 @@ export default function Cart( { cart, showCart, items, updateCart, deleteItem } 
                     totalPrice=totalPrice+(itemInfo[0].price*product.quantity)
                     return (
                         <>                            
-                            <CartItem id={itemInfo[0].id} title={itemInfo[0].title} price={itemInfo[0].price} img={itemInfo[0].image} quantity={product.quantity} updateCart={updateCart} deleteItem={deleteItem} />
+                            <CartItem 
+                                id={itemInfo[0].id} 
+                                title={itemInfo[0].title} 
+                                price={itemInfo[0].price} 
+                                img={itemInfo[0].image} 
+                                quantity={product.quantity} 
+                                updateCart={updateCart} 
+                                deleteItem={deleteItem} />
                         </>
                     )
                 }
 
             })}
             <p>Total: ${totalPrice.toFixed(2)}</p>
+            <button onClick={handleShowCart}>Close</button>
         </div>
     )
 }
