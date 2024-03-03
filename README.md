@@ -1,6 +1,6 @@
-# React + Vite
+# Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Shopping Cart app built as a project in The Odin Project's (TOP) React Course [@Link](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart)
 
 Currently, two official plugins are available:
 
