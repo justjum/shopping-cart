@@ -1,8 +1,23 @@
-# React + Vite
+# A Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Status:** In Progress
 
-Currently, two official plugins are available:
+**Live Demo:** [Shopping Cart](https://shopping-cart-nu-lac.vercel.app/shop)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Description:** A Shopping Cart app built as a project in The Odin Project's (TOP) React Course [Link](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart)
+
+**Language/Frameworks:** React, Vite, Javascript, CSS
+
+**Learning Focus:** React (API calls, React Router, Testing)
+
+## Usage
+
+- Head to the 'Product' page to shop to your hearts content, without the drain on your wallet.
+ - Add # of items to the Shopping Cart
+ - Click on item image to bring up detailed description
+- Click 'Cart' Icon to show Shopping Cart
+ - Increase/Decrease/Remove items from Shopping Cart
+ - Total updated at each change
+
+## Credits
+- [Fake Store API](https://fakestoreapi.com/)
