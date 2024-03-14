@@ -9,13 +9,13 @@ function Header( { totalItems, handleShowCart } ) {
 
   return (
     <>
-      <div className="header">
+      <div className="header" data-testid='header'>
         <div className='nav-bar'>
           <Link to="home">Home</Link><br />
           <Link to="shop">Products</Link>
         </div>
         <p>LOGO</p>
-        <div onClick={handleShowCart} className='cart-icon'>
+        <div onClick={handleShowCart} className='cart-icon' data-testid='cart-icon'>
             <Icon path={mdiCartOutline} size={1} />
             <p>{totalItems}</p>
         </div>
