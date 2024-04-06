@@ -1,6 +1,6 @@
 # A Shopping Cart
 
-**Status:** In Progress
+**Status:** Complete
 
 **Live Demo:** [Shopping Cart](https://shopping-cart-nu-lac.vercel.app/shop)
 
