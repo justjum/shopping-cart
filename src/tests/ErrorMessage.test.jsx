@@ -11,7 +11,6 @@ describe("Error message", () => {
     });
     it("renders custom error state", () => {
         render(<ErrorMessage message='Nooooo' />);
-        screen.debug();
         expect(screen.getByTestId('error-message')).toHaveTextContent('Nooooo')
     });
 });
